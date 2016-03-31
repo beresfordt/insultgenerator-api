@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+group 'io.insultgenerator-api'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
+
+jar {
+    baseName = 'insultgenerator-api'
+    version =  null
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    compile 'org.apache.httpcomponents:fluent-hc:4.5.2'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.3.3.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-actuator:1.3.3.RELEASE'
+    compile 'org.jsoup:jsoup:1.8.3'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE')
+    }
+}
